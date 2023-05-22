@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Users = require("../../models/users");
+const sign = require("jwt-encode");
+
+const secret = process.env.SECRET_KEY
 
 router.get("/:admin_id", async (req, res) => {
     try {
@@ -44,11 +47,16 @@ router.put('/change_password/:admin_id', async (req, res) => {
     console.log('req.body', req.body)
     try {
         const foundUser = await Users.findByIdAndUpdate(id, {});
-        const oldPassMatch = req.body.old_password == foundUser?.password;
+        const oldPassEnc = sign(req.body.old_password, secret)
+        const oldPassMatch = oldPassEnc == foundUser?.password;
+        console.log('oldPassMatch', oldPassEnc, foundUser?.password)
+
         if (oldPassMatch == true) {
             const updatedData = {};
             if (req.body.new_password) {
-                updatedData.password = String(req.body.new_password);
+
+                const encPass = sign(req.body.new_password.toString(), secret)
+                updatedData.password = encPass;
             }
             const options = { new: true };
             await Users.findByIdAndUpdate(id, updatedData, options);

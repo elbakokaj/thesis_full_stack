@@ -12,7 +12,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const passEncode = sign(password, "marinariPopaj");
+        const passEncode = sign(password, "marinairPopaj");
         console.log('passEncode', passEncode)
         const body = {
             email: email,

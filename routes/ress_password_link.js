@@ -5,6 +5,7 @@ const jwt_decode = require('jwt-decode');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const Users = require("../models/users");
+const secret = process.env.SECRET_KEY
 
 
 const bodyParser = require('body-parser');
@@ -72,11 +73,11 @@ router.get('/reset-password/:token', async (req, res, next) => {
 
         // Update the user's password and clear the reset token fields
         console.log('setting new password');
-        user.password = req.body.password;
+        user.password = sign(req.body.password, secret);
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
         const randomPassword = crypto.randomBytes(20).toString('hex');
-        user.password = randomPassword;
+        user.password = sign(randomPassword, secret);
 
         await user.save();
 

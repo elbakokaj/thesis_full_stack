@@ -7,7 +7,8 @@
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "jest"
+    "test-server": "jest ./middleware && jest ./routes",
+    "test-client": "cd client && jest "
   },
   "author": "Elba Kokaj",
   "license": "ISC",

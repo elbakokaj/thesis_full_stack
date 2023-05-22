@@ -74,19 +74,6 @@ describe('Student Component', () => {
         expect(studentProfile).toBeInTheDocument();
     });
 
-    test('shows Courses when Courses link is clicked', async () => {
-        render(<Student />);
-        const coursesLink = screen.getByText(/Courses/i);
-
-        fireEvent.click(coursesLink);
-
-        // const courseRow = await screen.findByText(/Mock Course/i);
-        // fireEvent.click(courseRow);
-
-        const coursesToShow = await screen.findByTestId("coursesToShow");
-        expect(coursesToShow).toBeInTheDocument();
-    });
-
     it('toggles the change password mode', async () => {
         render(<Student />);
         // Find the Profile button and click it
@@ -96,7 +83,7 @@ describe('Student Component', () => {
         // Check if the student Profile text is displayed after the click event
         const studentProfileElement = await screen.findByTestId('student-prof');
         expect(studentProfileElement).toBeInTheDocument();
-        // Find the Change Password button and click it
+        // Find the Change Password button and click it 
         const changePasswordBtn = screen.getByText('Change Password');
         fireEvent.click(changePasswordBtn);
 

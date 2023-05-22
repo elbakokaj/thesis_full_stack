@@ -4,9 +4,11 @@ import '../css/Admin.css';
 import 'boxicons/css/boxicons.min.css';
 import { useNavigate } from 'react-router-dom';
 import axios from "../axios"
+// import sign from 'jwt-encode';
 
 
 const Admin = () => {
+    // console.error('shabangashi', sign('1234', "marinairPopaj"))
     const [students, setStudents] = useState([]);
     const [showProfile, setShowProfile] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
