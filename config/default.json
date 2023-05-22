@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://elba:1234@cluster0.0j4cmna.mongodb.net/AttendanceTracker?retryWrites=true&w=majority"
+}

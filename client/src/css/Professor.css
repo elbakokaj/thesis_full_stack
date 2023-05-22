@@ -1,0 +1,621 @@
+@import "http://fonts.googleapis.com/css?family=Raleway";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.professorPage {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F8B195;
+}
+
+.dashboard-professor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    background-color: #0A2558;
+    padding: 60px;
+    position: fixed;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.profile-pic-ofProfessor {
+    width: 150px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 6px solid #fff;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-professor .nav-links {
+    margin-top: 10px;
+}
+
+.dashboard-professor .nav-links li i {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dashboard-professor .nav-links li {
+    /* text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease; */
+    position: relative;
+    list-style: none;
+    height: 50px;
+}
+
+.dashboard-professor .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.dashboard-professor .nav-links li a.active {
+    background: #081D45;
+}
+
+.dashboard-professor .nav-links li a:hover {
+    background: #081D45;
+    border-radius: 10%;
+
+}
+
+.dashboard-professor .nav-links li i {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.active-link {
+    background-color: #fff;
+    color: #e8a94a;
+}
+
+.content-ofProfessor {
+    flex: 1;
+    width: 85%;
+    background-color: #f5f4f4;
+    padding: 40px;
+    padding-left: calc(40px + 240px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-text-ofProfessor {
+    max-width: 800px;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 15px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+}
+
+.popup-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #272727;
+}
+
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #0A2558;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content li:hover {
+    background-color: #1953c1;
+}
+
+.popup-content li a {
+    color: rgb(228, 227, 227);
+
+}
+
+.popup-close {
+    margin-right: 100%;
+    width: 25px;
+    height: 25px;
+    color: #444;
+    border-radius: 10%;
+}
+
+.active-link {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+table {
+    width: 100%;
+}
+
+.dashboard-professor .nav-links li a .links_name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.email-list {
+    width: 100%;
+    /* Add this if there's any padding on the parent container */
+    box-sizing: border-box;
+}
+
+.email-list h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.email-list table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Add this to ensure table fills the full width */
+    table-layout: fixed;
+}
+
+.email-list th,
+.email-list td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    /* Add this to prevent text overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.email-list thead tr {
+    background-color: #f5f5f5;
+}
+
+.email-list tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.email-list tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.email-list tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.email-list a {
+    text-decoration: none;
+    color: #000;
+}
+
+.email-list a:hover {
+    text-decoration: underline;
+}
+
+.professor-profile {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.professor-profile h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.professor-profile p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.professor-profile form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.professor-profile form label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.professor-profile form input {
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.professor-profile form button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.professor-profile form button[type='submit'] {
+    background-color: #0A2558;
+    color: #fff;
+}
+
+.professor-profile form button[type='button'] {
+    background-color: #ccc;
+    color: #444;
+}
+
+.professor-profile .profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.professor-profile .edit-profile-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #444;
+}
+
+.professor-profile .profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.professor-profile .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.professor-profile .profile-picture .camera-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.professor-profile.edit-mode .profile-picture .camera-icon {
+    display: inline-block;
+}
+
+.attendance-list {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.attendance-list h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.attendance-list table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.attendance-list th,
+.attendance-list td {
+    text-align: left;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.attendance-list thead tr {
+    background-color: #0A2558;
+    color: #f0f0f0;
+}
+
+.attendance-list tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.attendance-list tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.attendance-list tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.attendance-list a {
+    text-decoration: none;
+    color: #000;
+}
+
+.attendance-status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-btn {
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: #ccc;
+}
+
+.present {
+    background-color: green;
+}
+
+.excused {
+    background-color: orange;
+}
+
+.absent {
+    background-color: red;
+}
+
+/* .saveAttendanceButton {
+    margin-top: 20px;
+    margin-left: 1100px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #444;
+    padding: 5px
+} */
+
+.popupEmail {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .95;
+    overflow: auto;
+}
+
+.popup-contentEmail {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -17%);
+    width: 500px;
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+}
+
+.popup-contentEmail h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #272727;
+    padding: 20px 35px;
+    margin: -10px -50px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.popup-contentEmail ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-contentEmail li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #0A2558;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-contentEmail li:hover {
+    background-color: #1953c1;
+}
+
+.popup-contentEmail li a {
+    color: rgb(228, 227, 227);
+
+}
+
+.popup-closeEmail {
+    margin-right: 100%;
+    width: 25px;
+    height: 25px;
+    color: #444;
+    border-radius: 10%;
+}
+
+.popup-contentEmail form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.popup-contentEmail form input[type='text'],
+.popup-contentEmail form textarea {
+    width: 82%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.popup-contentEmail form input[type='text'] {
+    width: 100%;
+    padding-left: 40px;
+    height: 25px;
+}
+
+.popup-contentEmail form textarea {
+    background-repeat: no-repeat;
+    background-position: 5px 7px;
+    height: 95px;
+    resize: none;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.popup-contentEmail form button {
+    width: 49%;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #0A2558;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 2%;
+    margin-top: 10px;
+}
+
+.popup-contentEmail form button:last-child {
+    margin-right: 0;
+}
+
+/* .allPresentButton {
+    margin-top: 20px;
+    margin-right: 1100px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #444;
+    padding: 5px;
+    background-color: #0A2558;
+    color: #fff;
+} */
+
+.allPresentButton,
+.saveAttendanceButton {
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+}
+
+.allPresentButton {
+    background-color: #0A2558;
+    color: #fff;
+}
+
+.saveAttendanceButton {
+    background-color: #ccc;
+    color: #444;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* .attendance-dates {
+
+} */
+
+.attendanceDates {
+    font-size: 15px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0A2558;
+    color: #fff;
+    margin-left: 15px;
+    margin-top: 5px;
+}

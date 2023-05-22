@@ -1,0 +1,326 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+} */
+
+.adminPage {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F8B195;
+}
+
+.dashboard-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    background-color: #0A2558;
+    padding: 60px;
+    position: fixed;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.profile-pic-ofAdmin {
+    width: 150px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 6px solid #fff;
+    display: flex;
+    align-items: center;
+}
+
+
+.dashboard-admin .nav-links {
+    margin-top: 10px;
+}
+
+.dashboard-admin .nav-links li i {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dashboard-admin .nav-links li {
+    position: relative;
+    list-style: none;
+    height: 50px;
+}
+
+.dashboard-admin .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.dashboard-admin .nav-links li a.active {
+    background: #081D45;
+}
+
+.dashboard-admin .nav-links li a:hover {
+    background: #081D45;
+    border-radius: 10%;
+
+}
+
+.dashboard-admin .nav-links li i {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.active-link {
+    background-color: #fff;
+    color: #e8a94a;
+}
+
+
+.content-ofAdmin {
+    flex: 1;
+    width: 85%;
+    background-color: #f5f4f4;
+    padding: 40px;
+    padding-left: calc(40px + 240px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-text-ofAdmin {
+    max-width: 800px;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+
+.active-link {
+    background-color: #fff;
+    color: #e8a94a;
+}
+
+.attendance-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.status-btn {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.present {
+    background-color: #2ecc71;
+}
+
+.excused {
+    background-color: #f1c40f;
+}
+
+.absent {
+    background-color: #e74c3c;
+}
+
+.dashboard-admin .nav-links li a .links_name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.admin-profile {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.admin-profile h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.admin-profile p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.admin-profile form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-profile form label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.admin-profile form input {
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.admin-profile form button {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.admin-profile form button[type='submit'] {
+    background-color: #0A2558;
+    color: #fff;
+}
+
+.admin-profile form button[type='button'] {
+    background-color: #ccc;
+    color: #444;
+}
+
+.admin-profile .profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.admin-profile .edit-profile-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #444;
+}
+
+.admin-profile .profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-profile .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.admin-profile .profile-picture .camera-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.admin-profile.edit-mode .profile-picture .camera-icon {
+    display: inline-block;
+}
+
+.email-list thead tr {
+    background-color: #f5f5f5;
+}
+
+.email-list tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.email-list tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.email-list tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.email-list a {
+    text-decoration: none;
+    color: #000;
+}
+
+.email-list a:hover {
+    text-decoration: underline;
+}
+
+.semesterSelection,
+.groupSelection {
+    display: flex;
+    flex-direction: column;
+}
+
+.semesterSelection>div,
+.groupSelection>div {
+    margin-right: 20px;
+}
+
+.white-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.semesterSelection li,
+.groupSelection li {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.listDates {
+    font-size: 15px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0A2558;
+    color: #fff;
+    margin-left: 15px;
+    margin-top: 5px;
+}
