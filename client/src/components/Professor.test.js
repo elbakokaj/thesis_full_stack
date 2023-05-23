@@ -85,7 +85,9 @@ describe('Professor Component', () => {
         const changePasswordHeader = await screen.findByTestId('change-password-header');
         expect(changePasswordHeader).toBeInTheDocument();
     });
-
+    it('renders Professor', () => {
+        render(<Professor />);
+    });
     test('edit profile form appears when the "Edit Profile" button is clicked', async () => {
         render(<Professor />);
         const profileButton = screen.getByText('Profile');
@@ -333,8 +335,6 @@ describe('Professor Component', () => {
 
     });
 
-
-    //test case per kur e prek daten ne taken attendance 
 
 
 

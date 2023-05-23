@@ -156,4 +156,5 @@ describe('Student Component', () => {
             expect(axios.put).toHaveBeenCalledTimes(2);
         });
     });
+
 });
