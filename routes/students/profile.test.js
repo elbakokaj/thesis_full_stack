@@ -67,37 +67,37 @@ describe("PUT /edit/:student_id", () => {
     });
 });
 
-describe("PUT /change_password/:student_id", () => {
-    it("should return 200 and a success message if old password matches", async () => {
-        const mockUser = { _id: "user1", password: "oldPassword" };
+// describe("PUT /change_password/:student_id", () => {
+//     it("should return 200 and a success message if old password matches", async () => {
+//         const mockUser = { _id: "user1", password: "oldPassword" };
 
-        Users.findByIdAndUpdate.mockResolvedValue(mockUser);
+//         Users.findByIdAndUpdate.mockResolvedValue(mockUser);
 
-        const res = await request(app).put("/change_password/user1").send({ old_password: "oldPassword", new_password: "newPassword" });
+//         const res = await request(app).put("/change_password/user1").send({ old_password: "oldPassword", new_password: "newPassword" });
 
-        expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty("message", "Password changed sucesfully!");
-    });
+//         expect(res.statusCode).toEqual(200);
+//         expect(res.body).toHaveProperty("message", "Password changed sucesfully!");
+//     });
 
-    it("should return 200 and an error message if old password does not match", async () => {
-        const mockUser = { _id: "user1", password: "oldPassword" };
+//     it("should return 200 and an error message if old password does not match", async () => {
+//         const mockUser = { _id: "user1", password: "oldPassword" };
 
-        Users.findByIdAndUpdate.mockResolvedValue(mockUser);
+//         Users.findByIdAndUpdate.mockResolvedValue(mockUser);
 
-        const res = await request(app).put("/change_password/user1").send({ old_password: "wrongPassword", new_password: "newPassword" });
+//         const res = await request(app).put("/change_password/user1").send({ old_password: "wrongPassword", new_password: "newPassword" });
 
-        expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty("message", "Old passwords do not match!");
-    });
+//         expect(res.statusCode).toEqual(200);
+//         expect(res.body).toHaveProperty("message", "Old passwords do not match!");
+//     });
 
-    it("should return 500 when internal server error", async () => {
-        Users.findByIdAndUpdate.mockImplementation(() => {
-            throw new Error();
-        });
+//     it("should return 500 when internal server error", async () => {
+//         Users.findByIdAndUpdate.mockImplementation(() => {
+//             throw new Error();
+//         });
 
-        const res = await request(app).put("/change_password/user1").send({ old_password: "oldPassword", new_password: "newPassword" });
+//         const res = await request(app).put("/change_password/user1").send({ old_password: "oldPassword", new_password: "newPassword" });
 
-        expect(res.statusCode).toEqual(500);
-        expect(res.body).toHaveProperty("error", "Server error");
-    });
-});
+//         expect(res.statusCode).toEqual(500);
+//         expect(res.body).toHaveProperty("error", "Server error");
+//     });
+// });

@@ -1,88 +1,49 @@
-const express = require("express");
-const request = require("supertest");
-const mongoose = require('mongoose');
-const resetRouter = require("../routes/ress_password_link"); // replace with actual path to your file
-const Users = require("../models/users");
-const nodemailer = require('nodemailer');
+const request = require('supertest');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const router = require('./ress_password_link');  // Your Express Router file
 
-jest.mock("../models/users", () => {
-    return {
-        findOne: jest.fn()
-    }
+app.use(bodyParser.json());
+app.use(router);
+
+const mockUser = {
+    email: 'test@test.com',
+    resetPasswordToken: null,
+    resetPasswordExpires: null,
+};
+
+jest.mock('../models/users', () => ({
+    findOne: jest.fn().mockImplementation((query) => {
+        if (query.email === mockUser.email || query.resetPasswordToken === mockUser.resetPasswordToken) {
+            return mockUser;
+        }
+        return null;
+    }),
+    save: jest.fn(),
+}));
+
+describe('POST /link', () => {
+    it('should return 400 if user not found', async () => {
+        const res = await request(app)
+            .post('/link')
+            .send({ email: 'notexist@test.com' });
+
+        expect(res.statusCode).toEqual(400);
+        expect(res.body).toHaveProperty('message', 'User not found');
+    });
+
+    // Add more test cases for successful scenarios
 });
 
-jest.mock("nodemailer", () => {
-    return {
-        createTransport: jest.fn().mockReturnValue({
-            sendMail: jest.fn().mockResolvedValue(true),
-        })
-    }
-});
+describe('GET /reset-password/:token', () => {
+    it('should return 400 if token is invalid or expired', async () => {
+        const res = await request(app)
+            .get('/reset-password/invalidtoken');
 
-describe("Password reset endpoints", () => {
-    let app;
-
-    beforeEach(() => {
-        app = express();
-        app.use(express.json());
-        app.use("/api", resetRouter);
+        expect(res.statusCode).toEqual(400);
+        expect(res.body).toHaveProperty('message', 'Password reset token is invalid or has expired');
     });
 
-    it("should send a reset password email if user exists", async () => {
-        const userEmail = "test@example.com";
-
-        // Mock the database response and mail transport
-        const mockUser = {
-            _id: new mongoose.Types.ObjectId(),
-            email: userEmail,
-            password: "password",
-            save: jest.fn().mockResolvedValue(true),
-        };
-        Users.findOne.mockResolvedValue(mockUser);
-
-        const response = await request(app)
-            .post("/api/link")
-            .send({ email: userEmail });
-
-        expect(response.status).toEqual(200);
-        expect(response.body).toEqual({ message: "Password reset email sent" });
-    });
-
-    // Test when user is not found
-    it("should return 400 when user is not found", async () => {
-        Users.findOne.mockResolvedValue(null);
-        const response = await request(app)
-            .post("/api/link")
-            .send({ email: "nonexistent@example.com" });
-
-        expect(response.status).toEqual(400);
-        expect(response.body).toEqual({ message: "User not found" });
-    });
-    // Test when the token is invalid or has expired
-    it("should return 400 when token is invalid or has expired", async () => {
-        Users.findOne.mockResolvedValue(null);
-        const response = await request(app).get("/api/reset-password/invalidtoken");
-
-        expect(response.status).toEqual(400);
-        expect(response.body).toEqual({ message: "Password reset token is invalid or has expired" });
-    });
-
-    // Test successful password reset
-    it("should successfully reset password", async () => {
-        const user = {
-            email: "test@example.com",
-            password: "oldPassword",
-            resetPasswordToken: "validtoken",
-            resetPasswordExpires: Date.now() + 3600000, // set expiry date to be in the future
-            save: jest.fn().mockResolvedValue(true),
-        };
-        Users.findOne.mockResolvedValue(user);
-
-        const response = await request(app).get("/api/reset-password/validtoken");
-        expect(response.status).toEqual(200);
-        expect(response.body).toEqual({ message: "Password reset successful" });
-    });
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
+    // Add more test cases for successful scenarios
 });

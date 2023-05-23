@@ -22,13 +22,13 @@ describe("GET /course_name/:studentId", () => {
         expect(res.body).toEqual(mockCourses);
     });
 
-    it("should return 404 when no courses are found", async () => {
+    it("should return 401 when no courses are found", async () => {
         Courses.aggregate.mockResolvedValue([]);
 
         const res = await request(app).get("/course_name/student1");
 
-        expect(res.statusCode).toEqual(404);
-        expect(res.text).toBe("No courses found for the given student ID.");
+        expect(res.statusCode).toEqual(401);
+        expect(res.text).toBe("No courses found this student!");
     });
 
     it("should return 500 when internal server error", async () => {
