@@ -392,10 +392,10 @@ const Professor = () => {
                         <h2 data-testId="change-password-header">Change Password</h2>
                         <form onSubmit={handlePasswordChange}>
                             <label>
-                                Current Password: <input name='currentPassword' onChange={(e) => handlePasswordText(e, "currentPassword")} />
+                                Current Password: <input type='password' name='currentPassword' onChange={(e) => handlePasswordText(e, "currentPassword")} />
                             </label>
                             <label>
-                                New Password: <input name='newPassword' onChange={(e) => handlePasswordText(e, "newPassword")} />
+                                New Password: <input type='password' name='newPassword' onChange={(e) => handlePasswordText(e, "newPassword")} />
                             </label>
                             <button type="submit" >Save Changes</button>
                             <button type='button' onClick={toggleProfile}>Cancel</button>
